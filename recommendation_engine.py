@@ -1,9 +1,3 @@
-# recommendation_engine.py
-"""
-SHL Assessment Recommendation Engine
-Hybrid semantic + keyword + optional LLM re-ranking
-"""
-
 import json
 import numpy as np
 import re
