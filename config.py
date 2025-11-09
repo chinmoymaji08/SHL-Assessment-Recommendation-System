@@ -1,7 +1,3 @@
-"""
-Configuration settings for SHL Recommendation System
-"""
-
 import os
 from pydantic_settings import BaseSettings
 from typing import Optional
@@ -16,7 +12,7 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
     
     # Model Configuration
-    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
+    EMBEDDING_MODEL: str = "paraphrase-MiniLM-L3-v2"
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
     GEMINI_MODEL: str = "gemini-1.5-flash-001"
     
