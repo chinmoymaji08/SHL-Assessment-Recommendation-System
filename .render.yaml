@@ -2,7 +2,10 @@ services:
   - type: web
     name: shl-assessment-backend
     env: python
-    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    buildCommand: |
+      pip install --upgrade pip
+      pip install --force-reinstall huggingface-hub==0.13.4
+      pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
     plan: free
     autoDeploy: true
