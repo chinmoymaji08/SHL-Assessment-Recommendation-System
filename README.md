@@ -90,4 +90,4 @@ Outputs a `predictions.csv` file with top recommendations per query.
 📍 Tamluk, India  
 🎓 B.Tech in Computer Science and Engineering (AI & ML)  
 💼 Passionate about Machine Learning Engineering  
-🔗 [LinkedIn](https://linkedin.com/in/chinmoy-maji08)
+🔗 [LinkedIn](https://www.linkedin.com/in/chinmoymaji/)
