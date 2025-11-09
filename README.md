@@ -1,6 +1,6 @@
 # SHL Assessment Recommendation System
 
-This project is an AI-powered SHL Assessment Recommendation System designed to help recruiters and hiring managers quickly find relevant SHL assessments based on natural language queries or job descriptions. It consists of two main components: a FastAPI backend and a React (Vite) frontend.
+This project is a SHL Assessment Recommendation System designed to help recruiters and hiring managers quickly find relevant SHL assessments based on natural language queries or job descriptions. It consists of two main components: a FastAPI backend and a React (Vite) frontend.
 
 ---
 
@@ -90,5 +90,4 @@ Outputs a `predictions.csv` file with top recommendations per query.
 📍 Tamluk, India  
 🎓 B.Tech in Computer Science and Engineering (AI & ML)  
 💼 Passionate about Machine Learning Engineering  
-🔗 [LinkedIn](https://linkedin.com/in/chinmoy-maji08)  
-📧 chinmoymaji08@gmail.com
+🔗 [LinkedIn](https://linkedin.com/in/chinmoy-maji08)
