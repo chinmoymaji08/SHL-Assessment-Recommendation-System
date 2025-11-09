@@ -4,11 +4,15 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 import uvicorn
+import os
 
 from recommendation_engine import RecommendationEngine
 from config import settings
 
-import os
+
+# ---------------------------------------------
+# Server configuration
+# ---------------------------------------------
 port = int(os.environ.get("PORT", 8000))
 
 # Initialize FastAPI app
@@ -18,21 +22,32 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware
+# ---------------------------------------------
+# CORS Configuration (Frontend Integration)
+# ---------------------------------------------
+# ✅ Allow your deployed Vercel frontend and local testing
+origins = [
+    "https://shl-frontend-mu.vercel.app",  # Your production frontend
+    "http://localhost:3000",               # Local development
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify allowed origins
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Initialize recommendation engine
+# ---------------------------------------------
+# Initialize Recommendation Engine
+# ---------------------------------------------
 recommendation_engine = RecommendationEngine()
 
 
-# ---------- Request/Response Models ----------
-
+# ---------------------------------------------
+# Request/Response Models
+# ---------------------------------------------
 class QueryRequest(BaseModel):
     query: str = Field(..., description="Job description or natural language query")
     max_results: Optional[int] = Field(
@@ -65,8 +80,9 @@ class HealthResponse(BaseModel):
     model_loaded: bool
 
 
-# ---------- Endpoints ----------
-
+# ---------------------------------------------
+# Endpoints
+# ---------------------------------------------
 @app.get("/health", response_model=HealthResponse, tags=["Health"])
 async def health_check():
     """Simple health check endpoint"""
@@ -124,6 +140,7 @@ async def root():
     return {
         "message": "SHL Assessment Recommendation API is running",
         "version": app.version,
+        "frontend": "https://shl-frontend-mu.vercel.app",
         "endpoints": {
             "health": "/health",
             "recommend": "/recommend (POST)",
@@ -132,5 +149,8 @@ async def root():
     }
 
 
+# ---------------------------------------------
+# Application Entry Point
+# ---------------------------------------------
 if __name__ == "__main__":
-    uvicorn.run("main:app", host=settings.API_HOST, port=settings.API_PORT, reload=True)
+    uvicorn.run("main:app", host=settings.API_HOST, port=port)
