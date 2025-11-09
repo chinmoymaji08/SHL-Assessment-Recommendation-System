@@ -1,8 +1,3 @@
-"""
-SHL Assessment Recommendation System - FastAPI Backend
-Main application file with API endpoints
-"""
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -13,6 +8,8 @@ import uvicorn
 from recommendation_engine import RecommendationEngine
 from config import settings
 
+import os
+port = int(os.environ.get("PORT", 8000))
 
 # Initialize FastAPI app
 app = FastAPI(
