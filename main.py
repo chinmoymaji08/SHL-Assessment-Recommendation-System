@@ -28,6 +28,7 @@ app = FastAPI(
 # ✅ Allow your deployed Vercel frontend and local testing
 origins = [
     "https://shl-frontend-mu.vercel.app",  # Your production frontend
+    "http://localhost:5173",               # Vite local dev
     "http://localhost:3000",               # Local development
 ]
 
